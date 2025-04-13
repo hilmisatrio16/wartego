@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.food.DetailFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/layout_button"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="16dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/top_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="16dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="16dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/end_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_end="16dp" />
+
+                <RelativeLayout
+                    android:id="@+id/header"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toStartOf="@id/end"
+                    app:layout_constraintStart_toEndOf="@id/start"
+                    app:layout_constraintTop_toBottomOf="@id/top_header">
+
+                    <Button
+                        android:id="@+id/btn_back"
+                        style="?attr/materialIconButtonFilledStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:backgroundTint="#ECF0F4"
+                        android:padding="16dp"
+                        app:icon="@drawable/arrow_back_24px"
+                        app:iconSize="20dp"
+                        app:iconTint="#181C2E" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/btn_back"
+                        android:fontFamily="@font/sen_regular"
+                        android:text="Details"
+                        android:textColor="#181C2E"
+                        android:textSize="18sp"
+                        android:textStyle="normal" />
+                </RelativeLayout>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_food"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="16dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sample_category"
+                    app:layout_constraintEnd_toStartOf="@id/end"
+                    app:layout_constraintStart_toEndOf="@id/start"
+                    app:layout_constraintTop_toBottomOf="@id/header"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_restaurant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toEndOf="@id/start"
+                    app:layout_constraintTop_toBottomOf="@id/iv_food"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+                    app:strokeColor="#E9E9E9">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/restaurant"
+                            app:tint="#FF7622" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_restaurant"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:fontFamily="@font/sen_regular"
+                            android:text="Uttora Coffe House"
+                            android:textColor="#181C2E"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sen_bold"
+                    android:text="pizza calzone european"
+                    android:textColor="#181C2E"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@id/start"
+                    app:layout_constraintTop_toBottomOf="@id/card_restaurant" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_food_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/sen_regular"
+                    android:text="Prosciutto e funghi is a pizza variety that is topped with tomato sauce."
+                    android:textColor="#A0A5BA"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/end"
+                    app:layout_constraintStart_toEndOf="@id/start"
+                    app:layout_constraintTop_toBottomOf="@id/tv_food" />
+
+                <LinearLayout
+                    android:id="@+id/layout_estimate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/start"
+                    app:layout_constraintTop_toBottomOf="@id/tv_food_desc">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_stars"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:drawableStart="@drawable/star"
+                        android:drawablePadding="4dp"
+                        android:fontFamily="@font/sen_bold"
+                        android:text="4.7"
+                        android:textColor="#181C2E"
+                        android:textSize="16sp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_delivery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="20dp"
+                        android:drawableStart="@drawable/delivery"
+                        android:drawablePadding="4dp"
+                        android:fontFamily="@font/sen_regular"
+                        android:text="Free"
+                        android:textColor="#181C2E"
+                        android:textSize="14sp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_clock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="20dp"
+                        android:drawableStart="@drawable/clock"
+                        android:drawablePadding="4dp"
+                        android:fontFamily="@font/sen_regular"
+                        android:text="20 min"
+                        android:textColor="#181C2E"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_ingredients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/sen_regular"
+                    android:text="INGREDIENTS"
+                    android:textColor="#181C2E"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/start"
+                    app:layout_constraintTop_toBottomOf="@id/layout_estimate" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_ingredients"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/start"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ingredients"
+                    tools:listitem="@layout/item_ingredient" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_related"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/sen_bold"
+                android:text="Related with"
+                android:textColor="#181C2E"
+                android:textSize="16sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_related_food"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_popular" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/layout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_margin="12dp"
+            android:backgroundTint="#FF7622"
+            android:fontFamily="@font/sen_bold"
+            android:text="ADD TO CART"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

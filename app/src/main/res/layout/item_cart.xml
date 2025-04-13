@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:background="@android:color/transparent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="16dp" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_food"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sample_category"
+        app:layout_constraintBottom_toTopOf="@id/end_bottom"
+        app:layout_constraintEnd_toStartOf="@id/end"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/top_header"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_name_food"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/sen_regular"
+        android:text="pizza calzone european"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/btn_delete"
+        app:layout_constraintStart_toEndOf="@id/iv_food"
+        app:layout_constraintTop_toTopOf="@id/iv_food" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_delete"
+        style="?attr/materialIconButtonFilledStyle"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#E04444"
+        android:gravity="center"
+        app:icon="@drawable/add_24px"
+        app:iconSize="14dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/end"
+        app:layout_constraintTop_toTopOf="@id/tv_name_food" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/sen_bold"
+        android:text="$32"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/tv_name_food"
+        app:layout_constraintTop_toBottomOf="@id/tv_name_food" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:alpha="0.5"
+        android:fontFamily="@font/sen_regular"
+        android:text="14'’"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/end_bottom"
+        app:layout_constraintStart_toStartOf="@id/tv_price"
+        app:layout_constraintTop_toBottomOf="@id/tv_price"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/tv_size"
+        app:layout_constraintEnd_toStartOf="@id/end"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toEndOf="@id/tv_size"
+        app:layout_constraintTop_toTopOf="@id/tv_size">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_min"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="#2A2A39"
+            app:icon="@drawable/remove_24px"
+            app:iconSize="14dp"
+            app:iconTint="@color/white" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            android:fontFamily="@font/sen_bold"
+            android:text="1"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_plus"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="#2A2A39"
+            android:gravity="center_horizontal"
+            app:icon="@drawable/add_24px"
+            app:iconSize="14dp"
+            app:iconTint="@color/white" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

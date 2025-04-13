@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.auth.profile.info.edit_profile.EditProfileFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="16dp" />
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btn_back"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:backgroundTint="#ECF0F4"
+            android:padding="16dp"
+            app:icon="@drawable/arrow_back_24px"
+            app:iconSize="20dp"
+            app:iconTint="#181C2E" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_edit_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/btn_back"
+            android:fontFamily="@font/sen_regular"
+            android:text="Edit Profile"
+            android:textColor="#181C2E"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/end"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sample_category"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+        <Button
+            android:id="@+id/btn_upload_image"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_gravity="bottom|end"
+            android:backgroundTint="#FF7622"
+            app:icon="@drawable/edit_24px"
+            app:iconTint="@color/white" />
+    </FrameLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sen_regular"
+        android:text="FULL NAME"
+        android:textColor="#32343E"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/image" />
+
+    <EditText
+        android:id="@+id/tf_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_textfield"
+        android:fontFamily="@font/sen_regular"
+        android:hint="Justin Klok"
+        android:inputType="textWebEditText"
+        android:textColor="#32343E"
+        android:textColorHint="#A0A5BA"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@id/end"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/sen_regular"
+        android:text="EMAIL"
+        android:textColor="#32343E"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/tf_name" />
+
+    <EditText
+        android:id="@+id/tf_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_textfield"
+        android:fontFamily="@font/sen_regular"
+        android:hint="example@gmail.com"
+        android:inputType="textWebEmailAddress"
+        android:textColor="#32343E"
+        android:textColorHint="#A0A5BA"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@id/end"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/tv_email" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/sen_regular"
+        android:text="PHONE NUMBER"
+        android:textColor="#32343E"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/tf_email" />
+
+    <EditText
+        android:id="@+id/tf_phone_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_textfield"
+        android:fontFamily="@font/sen_regular"
+        android:hint="093-223-2323"
+        android:inputType="textWebEditText"
+        android:textColor="#32343E"
+        android:textColorHint="#A0A5BA"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@id/end"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/tv_phone_number" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_bio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/sen_regular"
+        android:text="BIO"
+        android:textColor="#32343E"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/tf_phone_number" />
+
+    <EditText
+        android:id="@+id/tf_bio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_textfield"
+        android:fontFamily="@font/sen_regular"
+        android:gravity="top|start"
+        android:hint="I like review food"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:singleLine="false"
+        android:textColor="#32343E"
+        android:textColorHint="#A0A5BA"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@id/end"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/tv_bio" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save"
+        style="?attr/materialIconButtonFilledStyle"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#FF7622"
+        android:fontFamily="@font/sen_bold"
+        android:text="SAVE"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/end"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintBottom_toTopOf="@id/end_bottom"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

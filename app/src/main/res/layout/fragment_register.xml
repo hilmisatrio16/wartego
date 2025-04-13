@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121223"
+    tools:context=".ui.auth.register.RegisterFragment">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bg_auth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/sen_bold"
+        android:text="Sign Up"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_login_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/sen_regular"
+        android:text="Please sign up to get started"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_signup" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="56dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_login_desc"
+        app:shapeAppearanceOverlay="@style/TopRoundedCard"
+        app:strokeWidth="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/top_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="16dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_end="16dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sen_regular"
+                android:text="NAME"
+                android:textColor="#32343E"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/top_header" />
+
+            <EditText
+                android:id="@+id/tf_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_textfield"
+                android:fontFamily="@font/sen_regular"
+                android:hint="Justin Klok"
+                android:inputType="textWebEmailAddress"
+                android:textColor="#32343E"
+                android:textColorHint="#A0A5BA"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/end"
+                app:layout_constraintStart_toEndOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/sen_regular"
+                android:text="EMAIL"
+                android:textColor="#32343E"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/tf_name" />
+
+            <EditText
+                android:id="@+id/tf_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_textfield"
+                android:fontFamily="@font/sen_regular"
+                android:hint="example@gmail.com"
+                android:inputType="textWebEmailAddress"
+                android:textColor="#32343E"
+                android:textColorHint="#A0A5BA"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/end"
+                app:layout_constraintStart_toEndOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/tv_email" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/sen_regular"
+                android:text="PASSWORD"
+                android:textColor="#32343E"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/tf_email" />
+
+            <EditText
+                android:id="@+id/tf_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_textfield"
+                android:fontFamily="@font/sen_regular"
+                android:hint="* * * * * * * * *"
+                android:inputType="textWebPassword"
+                android:textColor="#32343E"
+                android:textColorHint="#A0A5BA"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/end"
+                app:layout_constraintStart_toEndOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/tv_password" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_confirm_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/sen_regular"
+                android:text="CONFIRM PASSWORD"
+                android:textColor="#32343E"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/tf_password" />
+
+            <EditText
+                android:id="@+id/tf_confirm_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_textfield"
+                android:fontFamily="@font/sen_regular"
+                android:hint="* * * * * * * * *"
+                android:inputType="textWebPassword"
+                android:textColor="#32343E"
+                android:textColorHint="#A0A5BA"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/end"
+                app:layout_constraintStart_toEndOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/tv_confirm_password" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_login"
+                style="?attr/materialIconButtonFilledStyle"
+                android:layout_width="0dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#FF7622"
+                android:fontFamily="@font/sen_bold"
+                android:text="SIGN UP"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@id/end"
+                app:layout_constraintStart_toEndOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/tf_confirm_password"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_questaccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/sen_regular"
+                android:text="Don’t have an account?"
+                android:textColor="#646982"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@id/tv_login"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/btn_login" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/sen_bold"
+                android:text="LOG IN"
+                android:textColor="#FF7622"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/end"
+                app:layout_constraintStart_toEndOf="@id/tv_questaccount"
+                app:layout_constraintTop_toBottomOf="@id/btn_login" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
