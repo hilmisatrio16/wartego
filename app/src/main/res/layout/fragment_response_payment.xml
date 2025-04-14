@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.payment.result_payment.ResponsePaymentFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="16dp" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_response"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="#98A8B8"
+        app:layout_constraintBottom_toTopOf="@id/end_bottom"
+        app:layout_constraintEnd_toStartOf="@id/end"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/top_header"
+        app:layout_constraintVertical_bias="0.4"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Small" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_response"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sen_bold"
+        android:text="Congratulations!"
+        android:textColor="#181C2E"
+        android:textSize="24sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toStartOf="@id/end"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/iv_response" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/sen_regular"
+        android:text="You successfully maked a payment, enjoy our service!"
+        android:textAlignment="center"
+        android:textColor="#525C67"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toStartOf="@id/end"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/tv_response" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_back_home"
+        style="?attr/materialIconButtonFilledStyle"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#FF7622"
+        android:fontFamily="@font/sen_bold"
+        android:text="BACK TO HOME"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/end_bottom"
+        app:layout_constraintEnd_toStartOf="@id/end"
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
