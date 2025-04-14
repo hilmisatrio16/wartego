@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1009857654812",
+    "project_id": "flutter-web-portofolio-745bf",
+    "storage_bucket": "flutter-web-portofolio-745bf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009857654812:android:03d1d9c32b5f62cdeaefd9",
+        "android_client_info": {
+          "package_name": "com.hilmi.wartego"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4eOQpkeBVg3iLfDCPlPCtTz2q45uOu-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
