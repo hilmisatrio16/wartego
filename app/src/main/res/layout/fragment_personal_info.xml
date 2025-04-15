@@ -116,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sen_bold"
-                android:text="Name User"
+                android:text=""
                 android:textColor="#32343E"
                 android:textSize="20sp" />
 
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/sen_regular"
-                android:text="I love fast food"
+                android:text=""
                 android:textColor="#A0A5BA"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -190,11 +190,12 @@
                         android:textSize="14sp" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_full_name_user"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/sen_regular"
-                        android:text="Justin Hyme"
+                        android:text=""
                         android:textColor="#6B6E82"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -241,11 +242,12 @@
                         android:textSize="14sp" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/sen_regular"
-                        android:text="example@gmail.com"
+                        android:text=""
                         android:textColor="#6B6E82"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -292,11 +294,12 @@
                         android:textSize="14sp" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_phone_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/sen_regular"
-                        android:text="0983-2323-2323"
+                        android:text=""
                         android:textColor="#6B6E82"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -305,5 +308,15 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/circular_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:indicatorColor="#FF7622"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

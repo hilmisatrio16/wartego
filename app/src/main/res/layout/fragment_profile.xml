@@ -113,7 +113,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/sen_bold"
-                        android:text="Name User"
+                        android:text=""
                         android:textColor="#32343E"
                         android:textSize="20sp" />
 
@@ -123,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/sen_regular"
-                        android:text="I love fast food"
+                        android:text=""
                         android:textColor="#A0A5BA"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -216,7 +216,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_toEndOf="@id/iv_icon_address"
                             android:fontFamily="@font/sen_regular"
-                            android:text="Addresses"
+                            android:text="Address"
                             android:textColor="#32343E"
                             android:textSize="16sp" />
 
@@ -525,6 +525,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="28dp"
                 app:cardBackgroundColor="#F6F8FA"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
                 app:strokeWidth="0dp">
@@ -564,7 +565,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_toEndOf="@id/iv_icon_logout"
                             android:fontFamily="@font/sen_regular"
-                            android:text="FAQs"
+                            android:text="Log Out"
                             android:textColor="#32343E"
                             android:textSize="16sp" />
 
@@ -582,4 +583,15 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/circular_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:indicatorColor="#FF7622"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

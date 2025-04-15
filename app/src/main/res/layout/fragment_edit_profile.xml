@@ -119,7 +119,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/background_textfield"
         android:fontFamily="@font/sen_regular"
-        android:hint="Justin Klok"
+        android:hint="Your name"
         android:inputType="textWebEditText"
         android:textColor="#32343E"
         android:textColorHint="#A0A5BA"
@@ -146,6 +146,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/background_textfield"
+        android:enabled="false"
         android:fontFamily="@font/sen_regular"
         android:hint="example@gmail.com"
         android:inputType="textWebEmailAddress"
@@ -226,9 +227,20 @@
         android:text="SAVE"
         android:textColor="@color/white"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/end_bottom"
         app:layout_constraintEnd_toStartOf="@id/end"
         app:layout_constraintStart_toEndOf="@id/start"
-        app:layout_constraintBottom_toTopOf="@id/end_bottom"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
 
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/circular_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:indicatorColor="#FF7622"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
