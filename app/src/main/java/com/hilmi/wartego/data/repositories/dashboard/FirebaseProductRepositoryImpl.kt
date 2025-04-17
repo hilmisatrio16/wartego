@@ -15,6 +15,13 @@ class FirebaseProductRepositoryImpl @Inject constructor(
         return firebaseProductDataSource.foods(category)
     }
 
+    override suspend fun foodsByRestaurant(
+        idRestaurant: String,
+        category: Int
+    ): Flow<Response<List<Product>>> {
+        return firebaseProductDataSource.foodsByRestaurant(idRestaurant, category)
+    }
+
     override suspend fun category(): Flow<Response<List<Category>>> {
         return firebaseProductDataSource.category()
     }

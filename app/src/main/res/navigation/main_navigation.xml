@@ -37,6 +37,10 @@
         <action
             android:id="@+id/action_detailFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <argument
+            android:name="id"
+            app:argType="string"
+            android:defaultValue="1" />
     </fragment>
     <fragment
         android:id="@+id/detailRestaurantFragment"
@@ -47,6 +51,9 @@
             android:name="id"
             app:argType="string"
             android:defaultValue="1" />
+        <action
+            android:id="@+id/action_detailRestaurantFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"

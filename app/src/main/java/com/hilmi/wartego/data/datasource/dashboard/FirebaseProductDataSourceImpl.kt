@@ -41,6 +41,31 @@ class FirebaseProductDataSourceImpl @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
+    override suspend fun foodsByRestaurant(
+        idRestaurant: String,
+        category: Int
+    ): Flow<Response<List<Product>>> {
+        return flow {
+            try {
+                emit(Response.Loading)
+                val data = firestore.collection("food")
+                    .whereEqualTo("idCategory", category)
+                    .whereEqualTo("idRestaurant", idRestaurant)
+                    .get()
+                    .await()
+                if (!data.isEmpty) {
+                    val response = data.toObjects(Product::class.java)
+                    emit(Response.Success(response))
+                } else {
+                    emit(Response.Error("Error"))
+                }
+
+            } catch (e: Exception) {
+                emit(Response.Error("Error"))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
     override suspend fun category(): Flow<Response<List<Category>>> {
         return flow {
             try {
@@ -83,7 +108,7 @@ class FirebaseProductDataSourceImpl @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    override suspend fun detailRestaurant(id:String): Flow<Response<Restaurant>> {
+    override suspend fun detailRestaurant(id: String): Flow<Response<Restaurant>> {
         return flow {
             try {
                 emit(Response.Loading)
@@ -92,9 +117,9 @@ class FirebaseProductDataSourceImpl @Inject constructor(
                     .get()
                     .await()
 
-                if (data.exists()){
+                if (data.exists()) {
                     val response = data.toObject(Restaurant::class.java)
-                    if (response!=null){
+                    if (response != null) {
                         emit(Response.Success(response))
                     }
                 } else {

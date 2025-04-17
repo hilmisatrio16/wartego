@@ -15,6 +15,7 @@ interface FirebaseProductDataSource {
 //    suspend fun detailRestaurant(): Flow<Response<Restaurant>>
 
     suspend fun foods(category: Int): Flow<Response<List<Product>>>
+    suspend fun foodsByRestaurant(idRestaurant: String,category: Int): Flow<Response<List<Product>>>
     suspend fun category(): Flow<Response<List<com.hilmi.wartego.model.product.Category>>>
     suspend fun restaurants(): Flow<Response<List<Restaurant>>>
     suspend fun detailRestaurant(id: String): Flow<Response<Restaurant>>
