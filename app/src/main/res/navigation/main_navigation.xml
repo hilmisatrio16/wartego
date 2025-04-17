@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailRestaurantFragment"
+            app:destination="@id/detailRestaurantFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -39,7 +42,12 @@
         android:id="@+id/detailRestaurantFragment"
         android:name="com.hilmi.wartego.ui.detail.restaurant.DetailRestaurantFragment"
         android:label="fragment_detail_restaurant"
-        tools:layout="@layout/fragment_detail_restaurant" />
+        tools:layout="@layout/fragment_detail_restaurant" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            android:defaultValue="1" />
+    </fragment>
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.hilmi.wartego.ui.category.CategoryFragment"
@@ -48,6 +56,10 @@
         <action
             android:id="@+id/action_categoryFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"

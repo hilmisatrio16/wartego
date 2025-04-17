@@ -122,10 +122,7 @@ class FirebaseAuthDataSourceImpl @Inject constructor(
                     .document(uid)
                     .get()
                     .await()
-//
-//                val addressList = data.get("address") as? List<Address>
-//                emit(Response.Success(addressList!!))
-                // Mengambil field "address" dari Firestore
+
                 val addressListData = data.get("address") as? List<Map<String, Any>>
 
                 val addressList = addressListData?.map { addressMap ->

@@ -5,16 +5,72 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavArgs
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import com.hilmi.wartego.R
+import com.hilmi.wartego.adapters.FoodListAdapter
+import com.hilmi.wartego.databinding.FragmentCategoryBinding
+import com.hilmi.wartego.model.product.Product
+import com.hilmi.wartego.model.response.Response
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
+@AndroidEntryPoint
 class CategoryFragment : Fragment() {
 
+    private var _binding: FragmentCategoryBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: CategoryViewModel by viewModels()
+    private val args: CategoryFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category, container, false)
+    ): View {
+        _binding = FragmentCategoryBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getFoods(args.id)
+        observerCategoryData()
+    }
+
+    private fun observerCategoryData() {
+        val foodAdapter = FoodListAdapter {
+
+        }
+
+        binding.rvPopular.apply {
+            layoutManager = GridLayoutManager(context, 2)
+            adapter = foodAdapter
+        }
+
+        viewModel.foods.onEach {
+            when (it) {
+                is Response.Error -> {
+
+                }
+
+                Response.Loading -> {
+
+                }
+
+                is Response.Success -> {
+                    foodAdapter.submitData(it.data as ArrayList<Product>)
+                }
+            }
+        }.launchIn(lifecycleScope)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
