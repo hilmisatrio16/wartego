@@ -69,7 +69,7 @@
         android:layout_height="40dp"
         android:backgroundTint="#E04444"
         android:gravity="center"
-        app:icon="@drawable/add_24px"
+        app:icon="@drawable/close_24px"
         app:iconSize="14dp"
         app:iconTint="@color/white"
         app:layout_constraintEnd_toStartOf="@id/end"

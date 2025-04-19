@@ -43,6 +43,10 @@ class HomeFragment : Fragment() {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment())
         }
 
+        binding.btnCart.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCartFragment())
+        }
+
         observerDataCategory()
         observerDataRestaurants()
     }

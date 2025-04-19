@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/layout_button"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
@@ -259,24 +259,118 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <LinearLayout
-        android:id="@+id/layout_button"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:cardBackgroundColor="#F0F5FA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:shapeAppearanceOverlay="@style/TopRoundedCard"
+        app:strokeWidth="0dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_add"
-            style="?attr/materialIconButtonFilledStyle"
+        <LinearLayout
+            android:id="@+id/layout_button"
             android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:layout_margin="12dp"
-            android:backgroundTint="#FF7622"
-            android:fontFamily="@font/sen_bold"
-            android:text="ADD TO CART"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:background="#F0F5FA"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_total_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="12dp"
+                    android:baselineAligned="true"
+                    android:fontFamily="@font/sen_regular"
+                    android:text="$96"
+                    android:textColor="#181C2E"
+                    android:textSize="28sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    app:cardBackgroundColor="#121223"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="6dp"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_size"
+                        app:layout_constraintEnd_toStartOf="@id/end"
+                        app:layout_constraintHorizontal_bias="1"
+                        app:layout_constraintStart_toEndOf="@id/tv_size"
+                        app:layout_constraintTop_toTopOf="@id/tv_size">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_min"
+                            style="?attr/materialIconButtonFilledStyle"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_gravity="center_vertical"
+                            android:backgroundTint="#2A2A39"
+                            app:icon="@drawable/remove_24px"
+                            app:iconSize="18dp"
+                            app:iconTint="@color/white" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_quantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginEnd="14dp"
+                            android:fontFamily="@font/sen_bold"
+                            android:text="1"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_plus"
+                            style="?attr/materialIconButtonFilledStyle"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_gravity="center_vertical"
+                            android:backgroundTint="#2A2A39"
+                            android:gravity="center_horizontal"
+                            app:icon="@drawable/add_24px"
+                            app:iconSize="18dp"
+                            app:iconTint="@color/white" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </RelativeLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add"
+                style="?attr/materialIconButtonFilledStyle"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#FF7622"
+                android:fontFamily="@font/sen_bold"
+                android:text="ADD TO CART"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

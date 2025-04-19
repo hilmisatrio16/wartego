@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavArgs
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hilmi.wartego.R
@@ -43,7 +44,11 @@ class CategoryFragment : Fragment() {
 
     private fun observerCategoryData() {
         val foodAdapter = FoodListAdapter {
-
+            findNavController().navigate(
+                CategoryFragmentDirections.actionCategoryFragmentToDetailFragment(
+                    it.id
+                )
+            )
         }
 
         binding.rvPopular.apply {
