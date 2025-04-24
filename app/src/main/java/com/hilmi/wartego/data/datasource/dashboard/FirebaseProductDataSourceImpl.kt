@@ -8,6 +8,7 @@ import com.hilmi.wartego.model.product.Product
 import com.hilmi.wartego.model.product.Restaurant
 import com.hilmi.wartego.model.profile.Address
 import com.hilmi.wartego.model.profile.Cart
+import com.hilmi.wartego.model.profile.CartEntity
 import com.hilmi.wartego.model.response.Response
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -173,7 +174,7 @@ class FirebaseProductDataSourceImpl @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    override suspend fun cart(uid: String): Flow<Response<List<Cart>>> {
+    override suspend fun cart(uid: String): Flow<Response<List<CartEntity>>> {
         return flow {
             try {
                 emit(Response.Loading)
@@ -185,13 +186,17 @@ class FirebaseProductDataSourceImpl @Inject constructor(
                 val listData = data.get("cart") as? List<Map<String, Any>>
 
                 val cartList = listData?.map { addressMap ->
-                    Cart(
+                    CartEntity(
                         idProduct = addressMap["idProduct"] as? String ?: "",
                         nameProduct = addressMap["nameProduct"] as? String ?: "",
                         imageUrl = addressMap["imageUrl"] as? String ?: "",
                         price = addressMap["price"] as? String ?: "",
-                        quantity = addressMap["quantity"] as? Int ?: 0,
+                        quantity =  (addressMap["quantity"] as? Long)?.toInt() ?: 0
                     )
+                }
+
+                if (cartList != null) {
+                    Log.d("QUANTITY", cartList.get(0).price.toString())
                 }
 
                 if (cartList != null) {
@@ -202,6 +207,31 @@ class FirebaseProductDataSourceImpl @Inject constructor(
 
             } catch (e: Exception) {
                 emit(Response.Error("Error"))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    override suspend fun searchFood(name: String): Flow<Response<List<Product>>> {
+        return flow {
+            try {
+                emit(Response.Loading)
+                val data = firestore.collection("food")
+                    .get()
+                    .await()
+                if (!data.isEmpty) {
+                    val response = data.toObjects(Product::class.java)
+                    val filteredProducts = response.filter {
+                        it.nameProduct.contains(name, ignoreCase = true) // Case-insensitive search
+                    }
+                    emit(Response.Success(filteredProducts))
+                } else {
+                    emit(Response.Error("Error"))
+                    Log.d("HASIL SEARCH", "error $name")
+                }
+
+            } catch (e: Exception) {
+                emit(Response.Error("Error"))
+                Log.d("HASIL SEARCH", e.message.toString())
             }
         }.flowOn(Dispatchers.IO)
     }

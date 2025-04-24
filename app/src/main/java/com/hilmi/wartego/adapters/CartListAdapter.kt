@@ -3,30 +3,27 @@ package com.hilmi.wartego.adapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.hilmi.wartego.R
-import com.hilmi.wartego.databinding.ItemAddressBinding
 import com.hilmi.wartego.databinding.ItemCartBinding
-import com.hilmi.wartego.model.profile.Address
-import com.hilmi.wartego.model.profile.Cart
+import com.hilmi.wartego.model.profile.CartEntity
 
-class CartListAdapter :
+class CartListAdapter() :
     RecyclerView.Adapter<CartListAdapter.ViewHolder>() {
 
-    private var diffCallbackUser = object : DiffUtil.ItemCallback<Cart>() {
+    private var diffCallbackUser = object : DiffUtil.ItemCallback<CartEntity>() {
         override fun areItemsTheSame(
-            oldItem: Cart,
-            newItem: Cart
+            oldItem: CartEntity,
+            newItem: CartEntity
         ): Boolean {
             return oldItem.idProduct == newItem.idProduct
         }
 
         override fun areContentsTheSame(
-            oldItem: Cart,
-            newItem: Cart
+            oldItem: CartEntity,
+            newItem: CartEntity
         ): Boolean {
             return oldItem.hashCode() == newItem.hashCode()
         }
@@ -35,20 +32,33 @@ class CartListAdapter :
 
     private var differ = AsyncListDiffer(this, diffCallbackUser)
 
-    fun submitData(valueList: ArrayList<Cart>) {
+    fun submitData(valueList: ArrayList<CartEntity>) {
         differ.submitList(valueList)
     }
 
     class ViewHolder(private var binding: ItemCartBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
-        fun bind(data: Cart) {
+        fun bind(data: CartEntity) {
             with(binding) {
                 tvNameFood.text = data.nameProduct
                 tvPrice.text = data.price
                 tvQuantity.text = data.quantity.toString()
+                btnPlus.setOnClickListener {
+                    val temp = tvQuantity.text.toString().toInt() + 1
+                    tvQuantity.text = temp.toString()
+                }
+                btnDelete.isVisible = data.idEditable
+                btnMin.setOnClickListener {
+                    var temp = tvQuantity.text.toString().toInt()
+                    if (temp >= 2) {
+                        temp -= 1
+                        tvQuantity.text = temp.toString()
+                    }
+                }
             }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

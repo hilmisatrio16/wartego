@@ -29,9 +29,22 @@ class HomeViewModel @Inject constructor(private val repository: FirebaseProductR
     private val _restaurant = MutableStateFlow<Response<List<Restaurant>>>(Response.Loading)
     val restaurant = _restaurant.asStateFlow()
 
+    private val _listFood = MutableStateFlow<Response<List<Product>>>(Response.Loading)
+    val listFood = _listFood.asStateFlow()
+
     init {
         getCategory()
         getRestaurants()
+    }
+
+    fun searchFood(name: String) = viewModelScope.launch {
+        repository.searchFood(name).collect {
+            _listFood.emit(it)
+        }
+    }
+
+    fun listFoodIsClear() = viewModelScope.launch {
+        _listFood.emit(Response.Success(emptyList()))
     }
 
     fun getCategory() = viewModelScope.launch {
@@ -41,7 +54,7 @@ class HomeViewModel @Inject constructor(private val repository: FirebaseProductR
     }
 
     fun getRestaurants() = viewModelScope.launch {
-        repository.restaurants().collect{
+        repository.restaurants().collect {
             _restaurant.emit(it)
         }
     }

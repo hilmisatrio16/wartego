@@ -13,8 +13,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hilmi.wartego.adapters.CategoryListAdapter
 import com.hilmi.wartego.adapters.RestaurantListAdapter
+import com.hilmi.wartego.adapters.SearchListAdapter
 import com.hilmi.wartego.databinding.FragmentHomeBinding
 import com.hilmi.wartego.model.product.Category
+import com.hilmi.wartego.model.product.Product
 import com.hilmi.wartego.model.product.Restaurant
 import com.hilmi.wartego.model.response.Response
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,13 +49,52 @@ class HomeFragment : Fragment() {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCartFragment())
         }
 
+        binding.searchBar.setOnClickListener {
+            binding.svFood.show()
+        }
+
         observerDataCategory()
         observerDataRestaurants()
+        searchFood()
+
+    }
+
+    private fun searchFood() {
+        binding.svFood.editText.setOnEditorActionListener { textView, _, _ ->
+            viewModel.searchFood(textView.text.toString())
+            Log.d("HASIL SEARCH", textView.text.toString())
+            true
+        }
+
+        val searchAdapter = SearchListAdapter {
+
+        }
+        binding.rvSearchView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = searchAdapter
+        }
+
+        viewModel.listFood.onEach {
+            when (it) {
+                is Response.Error -> {}
+                Response.Loading -> {
+
+                }
+
+                is Response.Success -> {
+                    searchAdapter.submitData(it.data as ArrayList<Product>)
+                }
+            }
+        }.launchIn(lifecycleScope)
     }
 
     private fun observerDataCategory() {
-        val adapterCategory = CategoryListAdapter{
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(it.id))
+        val adapterCategory = CategoryListAdapter {
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToCategoryFragment(
+                    it.id
+                )
+            )
         }
 
         binding.rvCategories.apply {
@@ -62,20 +103,25 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.category.onEach {
-            when(it){
+            when (it) {
                 is Response.Error -> {
                 }
+
                 Response.Loading -> {}
                 is Response.Success -> {
-                 adapterCategory.submitData(it.data as ArrayList<Category>)
+                    adapterCategory.submitData(it.data as ArrayList<Category>)
                 }
             }
         }.launchIn(lifecycleScope)
     }
 
     private fun observerDataRestaurants() {
-        val adapterRestaurant = RestaurantListAdapter{
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailRestaurantFragment(it.id))
+        val adapterRestaurant = RestaurantListAdapter {
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToDetailRestaurantFragment(
+                    it.id
+                )
+            )
         }
         binding.rvRestaurants.apply {
             layoutManager = LinearLayoutManager(context)
@@ -83,9 +129,10 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.restaurant.onEach {
-            when(it){
+            when (it) {
                 is Response.Error -> {
                 }
+
                 Response.Loading -> {}
                 is Response.Success -> {
                     adapterRestaurant.submitData(it.data as ArrayList<Restaurant>)

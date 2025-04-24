@@ -5,6 +5,7 @@ import com.hilmi.wartego.model.product.Category
 import com.hilmi.wartego.model.product.Product
 import com.hilmi.wartego.model.product.Restaurant
 import com.hilmi.wartego.model.profile.Cart
+import com.hilmi.wartego.model.profile.CartEntity
 import com.hilmi.wartego.model.response.Response
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -43,7 +44,11 @@ class FirebaseProductRepositoryImpl @Inject constructor(
         return firebaseProductDataSource.addCart(uid, cart)
     }
 
-    override suspend fun cart(uid: String): Flow<Response<List<Cart>>> {
+    override suspend fun cart(uid: String): Flow<Response<List<CartEntity>>> {
         return firebaseProductDataSource.cart(uid)
+    }
+
+    override suspend fun searchFood(name: String): Flow<Response<List<Product>>> {
+        return firebaseProductDataSource.searchFood(name)
     }
 }

@@ -170,16 +170,6 @@
                     app:backgroundTint="#F6F6F6" />
             </com.google.android.material.appbar.AppBarLayout>
 
-            <com.google.android.material.search.SearchView
-                android:id="@+id/sv_food"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Search dishes, restaurants">
-
-                <!-- Search suggestions/results go here (ScrollView, RecyclerView, etc.). -->
-
-            </com.google.android.material.search.SearchView>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -292,4 +282,22 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <com.google.android.material.search.SearchView
+        android:id="@+id/sv_food"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="Search dishes, restaurants"
+        app:backgroundTint="@color/white">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_searchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_searchview" />
+
+    </com.google.android.material.search.SearchView>
 </androidx.constraintlayout.widget.ConstraintLayout>
