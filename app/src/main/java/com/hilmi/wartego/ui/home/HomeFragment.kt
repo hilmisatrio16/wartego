@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -88,6 +89,22 @@ class HomeFragment : Fragment() {
         }.launchIn(lifecycleScope)
     }
 
+    private fun showLoadingListRestaurant(isLoad: Boolean) {
+        binding.rvRestaurants.isVisible = !isLoad
+        binding.shimmerListRestaurant.apply {
+            if (isLoad) startShimmer() else stopShimmer()
+            isVisible = isLoad
+        }
+    }
+
+    private fun showLoadingListCategory(isLoad: Boolean) {
+        binding.rvCategories.isVisible = !isLoad
+        binding.shimmerListCategory.apply {
+            if (isLoad) startShimmer() else stopShimmer()
+            isVisible = isLoad
+        }
+    }
+
     private fun observerDataCategory() {
         val adapterCategory = CategoryListAdapter {
             findNavController().navigate(
@@ -105,10 +122,15 @@ class HomeFragment : Fragment() {
         viewModel.category.onEach {
             when (it) {
                 is Response.Error -> {
+                    showLoadingListCategory(false)
                 }
 
-                Response.Loading -> {}
+                Response.Loading -> {
+                    showLoadingListCategory(true)
+                }
+
                 is Response.Success -> {
+                    showLoadingListCategory(false)
                     adapterCategory.submitData(it.data as ArrayList<Category>)
                 }
             }
@@ -131,10 +153,15 @@ class HomeFragment : Fragment() {
         viewModel.restaurant.onEach {
             when (it) {
                 is Response.Error -> {
+                    showLoadingListRestaurant(false)
                 }
 
-                Response.Loading -> {}
+                Response.Loading -> {
+                    showLoadingListRestaurant(true)
+                }
+
                 is Response.Success -> {
+                    showLoadingListRestaurant(false)
                     adapterRestaurant.submitData(it.data as ArrayList<Restaurant>)
                     Log.d("DEBUG RESTAURANT 2", it.toString())
                 }

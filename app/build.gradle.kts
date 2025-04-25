@@ -76,6 +76,9 @@ dependencies {
     // fragment
     implementation(libs.androidx.fragment.ktx)
 
+
+    implementation(libs.facebook.shimmer)
+
 }
 
 // Allow references to generated code

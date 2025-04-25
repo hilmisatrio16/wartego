@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavArgs
@@ -42,6 +43,14 @@ class CategoryFragment : Fragment() {
         observerCategoryData()
     }
 
+    private fun showLoadingListCategory(isLoad: Boolean) {
+        binding.rvPopular.isVisible = !isLoad
+        binding.shimmerListFood.apply {
+            if (isLoad) startShimmer() else stopShimmer()
+            isVisible = isLoad
+        }
+    }
+
     private fun observerCategoryData() {
         val foodAdapter = FoodListAdapter {
             findNavController().navigate(
@@ -59,14 +68,15 @@ class CategoryFragment : Fragment() {
         viewModel.foods.onEach {
             when (it) {
                 is Response.Error -> {
-
+                    showLoadingListCategory(false)
                 }
 
                 Response.Loading -> {
-
+                    showLoadingListCategory(true)
                 }
 
                 is Response.Success -> {
+                    showLoadingListCategory(false)
                     foodAdapter.submitData(it.data as ArrayList<Product>)
                 }
             }
