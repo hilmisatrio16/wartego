@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hilmi.wartego.R
@@ -30,6 +32,7 @@ class DetailFragment : Fragment() {
     private val viewModel: DetailViewModel by viewModels()
     private val args: DetailFragmentArgs by navArgs()
     private lateinit var product: Product
+    private var price: String? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -66,6 +69,10 @@ class DetailFragment : Fragment() {
                 cart
             )
         }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun observerCart() {
@@ -84,15 +91,28 @@ class DetailFragment : Fragment() {
     private fun observerQuantity() {
         viewModel.quantity.onEach {
             binding.tvQuantity.text = it.toString()
+
+            price?.let { priceFood ->
+                binding.tvTotalPrice.text = "${it * priceFood.toInt()}"
+            }
+
+
         }.launchIn(lifecycleScope)
     }
 
     private fun observerDataRelatedProduct() {
         viewModel.foods.onEach {
             when (it) {
-                is Response.Error -> {}
-                Response.Loading -> {}
+                is Response.Error -> {
+                    showLoading(false)
+                }
+
+                Response.Loading -> {
+                    showLoading(true)
+                }
+
                 is Response.Success -> {
+                    showLoading(false)
                     putDataInRecycleView(it.data.filter { item ->
                         item.id != args.id
                     })
@@ -130,7 +150,23 @@ class DetailFragment : Fragment() {
         viewModel.getFoods(data.idCategory)
         with(binding) {
             tvFood.text = data.nameProduct
+            tvTotalPrice.text = data.price
+            price = data.price
 //            tvDetail.text = data.
+        }
+    }
+
+    private fun showLoading(isLoad: Boolean) {
+        binding.layoutConstDetail.isVisible = !isLoad
+        binding.tvTotalPrice.isVisible = !isLoad
+        binding.shimmerDetailFood.apply {
+            if (isLoad) startShimmer() else stopShimmer()
+            isVisible = isLoad
+        }
+
+        binding.shimerTotalPrice.apply {
+            if (isLoad) startShimmer() else stopShimmer()
+            isVisible = isLoad
         }
     }
 

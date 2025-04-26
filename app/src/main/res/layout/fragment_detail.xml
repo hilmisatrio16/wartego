@@ -6,19 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".ui.detail.food.DetailFragment">
 
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btn_back"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:backgroundTint="#ECF0F4"
+            android:padding="16dp"
+            app:icon="@drawable/arrow_back_24px"
+            app:iconSize="20dp"
+            app:iconTint="#181C2E" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/btn_back"
+            android:fontFamily="@font/sen_regular"
+            android:text="Details"
+            android:textColor="#181C2E"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+    </RelativeLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/header">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_detail_food"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/item_detail_placeholder" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_const_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -50,42 +95,6 @@
                     android:orientation="horizontal"
                     app:layout_constraintGuide_end="16dp" />
 
-                <RelativeLayout
-                    android:id="@+id/header"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintEnd_toStartOf="@id/end"
-                    app:layout_constraintStart_toEndOf="@id/start"
-                    app:layout_constraintTop_toBottomOf="@id/top_header">
-
-                    <Button
-                        android:id="@+id/btn_back"
-                        style="?attr/materialIconButtonFilledStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:backgroundTint="#ECF0F4"
-                        android:padding="16dp"
-                        app:icon="@drawable/arrow_back_24px"
-                        app:iconSize="20dp"
-                        app:iconTint="#181C2E" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tv_detail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="12dp"
-                        android:layout_toEndOf="@id/btn_back"
-                        android:fontFamily="@font/sen_regular"
-                        android:text="Details"
-                        android:textColor="#181C2E"
-                        android:textSize="18sp"
-                        android:textStyle="normal" />
-                </RelativeLayout>
-
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/iv_food"
                     android:layout_width="0dp"
@@ -95,7 +104,7 @@
                     android:src="@drawable/sample_category"
                     app:layout_constraintEnd_toStartOf="@id/end"
                     app:layout_constraintStart_toEndOf="@id/start"
-                    app:layout_constraintTop_toBottomOf="@id/header"
+                    app:layout_constraintTop_toBottomOf="@id/top_header"
                     app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large" />
 
                 <com.google.android.material.card.MaterialCardView
@@ -214,6 +223,7 @@
                         app:drawableTint="#FF7622" />
                 </LinearLayout>
 
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_ingredients"
                     android:layout_width="wrap_content"
@@ -290,6 +300,21 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp">
 
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimer_total_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="140dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:background="@color/gray" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_total_price"
                     android:layout_width="wrap_content"
@@ -299,7 +324,7 @@
                     android:layout_marginStart="12dp"
                     android:baselineAligned="true"
                     android:fontFamily="@font/sen_regular"
-                    android:text="$96"
+                    android:text=""
                     android:textColor="#181C2E"
                     android:textSize="28sp" />
 

@@ -40,6 +40,10 @@ class PersonalInfoFragment : Fragment() {
         binding.tvEdit.setOnClickListener {
             findNavController().navigate(PersonalInfoFragmentDirections.actionPersonalInfoFragmentToEditProfileFragment())
         }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun observerData() {

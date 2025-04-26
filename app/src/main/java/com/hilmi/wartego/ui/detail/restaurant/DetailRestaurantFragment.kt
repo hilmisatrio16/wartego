@@ -42,6 +42,10 @@ class DetailRestaurantFragment : Fragment() {
         viewModel.getFoodsByRestaurant(args.id, 1)
         observerDataRestaurant()
         observerDataFood()
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun observerDataFood() {

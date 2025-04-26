@@ -43,6 +43,10 @@ class AddAddressFragment : Fragment() {
         binding.btnSaveLocation.setOnClickListener {
             checkAddressValidation()
         }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun checkAddressValidation() {

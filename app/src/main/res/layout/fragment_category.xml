@@ -130,21 +130,37 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="2">
+            android:columnCount="3">
+
+            <include layout="@layout/item_popular_placeholder" />
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="10dp" />
 
             <include layout="@layout/item_popular_placeholder" />
 
             <include layout="@layout/item_popular_placeholder" />
 
-            <include layout="@layout/item_popular_placeholder" />
+            <View
+                android:layout_width="20dp"
+                android:layout_height="10dp" />
 
             <include layout="@layout/item_popular_placeholder" />
 
             <include layout="@layout/item_popular_placeholder" />
 
+            <View
+                android:layout_width="20dp"
+                android:layout_height="10dp" />
+
             <include layout="@layout/item_popular_placeholder" />
 
             <include layout="@layout/item_popular_placeholder" />
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="10dp" />
 
             <include layout="@layout/item_popular_placeholder" />
         </GridLayout>

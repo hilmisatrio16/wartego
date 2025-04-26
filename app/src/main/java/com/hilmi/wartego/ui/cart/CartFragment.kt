@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hilmi.wartego.adapters.CartListAdapter
 import com.hilmi.wartego.databinding.FragmentCartBinding
@@ -39,6 +40,10 @@ class CartFragment : Fragment() {
         observerBtnEdit()
         binding.tvEdit.setOnClickListener {
             viewModel.isEdit()
+        }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 

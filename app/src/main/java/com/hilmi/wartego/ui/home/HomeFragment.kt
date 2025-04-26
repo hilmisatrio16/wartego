@@ -77,12 +77,15 @@ class HomeFragment : Fragment() {
 
         viewModel.listFood.onEach {
             when (it) {
-                is Response.Error -> {}
+                is Response.Error -> {
+                    showLoadingListSearchFood(false)
+                }
                 Response.Loading -> {
-
+                    showLoadingListSearchFood(true)
                 }
 
                 is Response.Success -> {
+                    showLoadingListSearchFood(false)
                     searchAdapter.submitData(it.data as ArrayList<Product>)
                 }
             }
@@ -100,6 +103,14 @@ class HomeFragment : Fragment() {
     private fun showLoadingListCategory(isLoad: Boolean) {
         binding.rvCategories.isVisible = !isLoad
         binding.shimmerListCategory.apply {
+            if (isLoad) startShimmer() else stopShimmer()
+            isVisible = isLoad
+        }
+    }
+
+    private fun showLoadingListSearchFood(isLoad: Boolean) {
+        binding.rvSearchView.isVisible = !isLoad
+        binding.shimmerSearchView.apply {
             if (isLoad) startShimmer() else stopShimmer()
             isVisible = isLoad
         }

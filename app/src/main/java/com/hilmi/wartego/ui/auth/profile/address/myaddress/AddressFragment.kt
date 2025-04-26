@@ -44,6 +44,10 @@ class AddressFragment : Fragment() {
         }
 
         observerData()
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun observerData() {

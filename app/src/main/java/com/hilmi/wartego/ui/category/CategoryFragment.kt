@@ -49,6 +49,10 @@ class CategoryFragment : Fragment() {
             if (isLoad) startShimmer() else stopShimmer()
             isVisible = isLoad
         }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun observerCategoryData() {

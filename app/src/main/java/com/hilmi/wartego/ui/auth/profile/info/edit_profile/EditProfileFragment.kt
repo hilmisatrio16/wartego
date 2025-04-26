@@ -43,6 +43,10 @@ class EditProfileFragment : Fragment() {
             checkField()
         }
 
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         observerUpdateUser()
     }
 

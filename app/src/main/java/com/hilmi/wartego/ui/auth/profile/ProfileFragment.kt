@@ -47,6 +47,10 @@ class ProfileFragment : Fragment() {
         binding.logout.setOnClickListener {
             confirmToLogOut()
         }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun confirmToLogOut() {
